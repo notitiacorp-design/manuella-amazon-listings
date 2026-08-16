@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Bilan de l'accompagnement Amazon Ronnie Extensions — compte vendeur, fiches produits, analyse et suite.">
+<title>Ronnie Extensions — Bilan de l'accompagnement Amazon</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:oklch(97.5% 0.006 85);color:oklch(16% 0.008 80);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+:root{
+--paper:oklch(97.5% 0.006 85);
+--paper-alt:oklch(94% 0.010 82);
+--ink:oklch(21% 0.008 80);
+--ink-soft:oklch(40% 0.010 80);
+--ink-muted:oklch(55% 0.008 78);
+--accent:oklch(52% 0.15 28);
+--rule:oklch(18% 0.006 82 / 0.12);
+--font-serif:Georgia,"Times New Roman",serif;
+--font-mono:"SF Mono","SFMono-Regular",ui-monospace,Menlo,monospace;
+--ease:cubic-bezier(0.16,1,0.3,1);
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:color-mix(in srgb,var(--paper) 82%,transparent);border-bottom:1px solid transparent;transition:box-shadow .3s var(--ease)}
+nav.nav-scrolled{border-bottom:1px solid var(--rule);box-shadow:0 1px 12px oklch(18% 0.006 82/0.06)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--font-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.brand b{color:var(--accent);font-weight:650}
+.navlinks{display:flex;gap:26px;font-size:13.5px}
+.navlinks a{color:var(--ink-soft);text-decoration:none;transition:color .2s}
+.navlinks a:hover{color:var(--ink)}
+/* HERO */
+.hero{padding:148px 0 72px;position:relative;overflow:hidden;border-bottom:1px solid var(--rule)}
+.hero-bg{position:absolute;border-radius:50%;filter:blur(110px);opacity:.11;pointer-events:none}
+.hb1{width:520px;height:520px;background:#d8966f;top:-160px;right:-120px;animation:float1 14s ease-in-out infinite}
+.hb2{width:420px;height:420px;background:#c9a06b;bottom:-180px;left:-120px;animation:float2 16s ease-in-out infinite}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(-26px,22px) scale(1.06)}66%{transform:translate(18px,-14px) scale(.95)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.05)}}
+.eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+.hero h1{font-family:var(--font-serif);font-size:clamp(38px,5.6vw,64px);line-height:1.06;font-weight:500;margin:0 0 26px;letter-spacing:-.01em;max-width:20ch}
+.hero h1 .em{color:var(--accent)}
+.lede{max-width:560px;font-size:18px;color:var(--ink-soft);margin:0}
+.meta{margin-top:40px;display:flex;gap:44px;flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;color:var(--ink-muted);letter-spacing:.04em;text-transform:uppercase}
+.meta div b{display:block;font-family:var(--font-serif);font-size:24px;font-weight:600;color:var(--ink);text-transform:none;letter-spacing:0;margin-top:6px}
+/* SECTIONS */
+section{padding:76px 0}
+section.alt{background:var(--paper-alt)}
+.sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:40px}
+.sec-num{font-family:var(--font-mono);font-size:13px;color:var(--accent);letter-spacing:.1em}
+.sec-head h2{font-family:var(--font-serif);font-size:clamp(26px,3.4vw,36px);font-weight:500;margin:0;letter-spacing:-.01em}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.is-in{opacity:1;transform:translateY(0)}
+.reveal.d1{transition-delay:.12s}.reveal.d2{transition-delay:.24s}.reveal.d3{transition-delay:.36s}
+/* STATS STRIP */
+.stats{background:var(--ink);color:#f0ede8;margin-top:6px}
+.stats .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding:52px 0}
+.stat .num{font-family:var(--font-serif);font-size:44px;font-weight:500;color:#f0ede8;line-height:1}
+.stat .lbl{font-family:var(--font-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#b9b2a8;margin-top:12px}
+.stat .txt{font-size:14px;color:#8f8980;margin-top:4px}
+.prop{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;border-top:1px solid var(--rule);padding:16px 0}
+.prop strong{font-size:16px}
+.prop p{margin:4px 0 0;color:var(--ink-soft);font-size:14.5px;max-width:64ch}
+.prop .pr{font-size:19px;font-weight:650;white-space:nowrap}
+/* RAPPORT */
+.pill{display:inline-block;font-family:var(--font-mono);font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;padding:4px 12px;border-radius:100px;border:1px solid var(--rule);color:var(--ink-soft);margin-right:8px;margin-bottom:6px}
+.pill.ok{border-color:oklch(58% 0.12 150);color:oklch(45% 0.12 150);background:oklch(96% 0.02 150)}
+.pill.inf{border-color:var(--rule);color:var(--ink-soft)}
+/* ANALYSE */
+.annotation{background:#fff;border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:8px;padding:22px 26px;margin-bottom:18px}
+.annotation b{color:var(--ink)}
+.annotation p{margin:6px 0 0;color:var(--ink-soft);font-size:15px}
+blockquote{font-family:var(--font-serif);font-size:22px;font-style:italic;color:var(--ink);max-width:60ch;line-height:1.5;margin:0}
+blockquote cite{display:block;font-family:var(--font-mono);font-size:12px;font-style:normal;color:var(--ink-muted);letter-spacing:.08em;text-transform:uppercase;margin-top:18px}
+/* RECO */
+.rec-group{margin-top:34px}
+.rec-group h3{font-family:var(--font-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-muted);margin:0 0 6px}
+ol.reco{counter-reset:r;list-style:none;padding:0;margin:0}
+ol.reco li{counter-increment:r;border-top:1px solid var(--rule);padding:16px 0 16px 46px;position:relative}
+ol.reco li::before{content:counter(r,decimal-leading-zero);position:absolute;left:0;top:17px;font-family:var(--font-mono);font-size:13px;color:var(--accent)}
+ol.reco li b{font-size:15.5px}
+ol.reco li p{margin:3px 0 0;color:var(--ink-soft);font-size:14.5px;max-width:72ch}
+/* GUIDE */
+.guide{background:#fff;border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.guide-head{background:var(--ink);color:#f0ede8;padding:26px 30px}
+.guide-head h3{margin:0 0 6px;font-family:var(--font-serif);font-size:22px;font-weight:500;color:#f0ede8}
+.guide-head p{margin:0;color:#b9b2a8;font-size:14px}
+.guide-body{padding:26px 30px}
+.step{display:grid;grid-template-columns:42px 1fr;gap:18px;padding:14px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+.step:last-child{border-bottom:0}
+.step .n{font-family:var(--font-serif);font-size:24px;color:var(--accent);line-height:1}
+.step .t b{font-size:15.5px}
+.step .t p{margin:4px 0 0;color:var(--ink-soft);font-size:14.5px}
+.secur{border:1px solid var(--rule);border-left:3px solid var(--accent);border-radius:8px;background:#fff;padding:20px 24px;margin-top:22px}
+/* CTA / footer */
+.cta{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.cta .inner{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:56px 0;flex-wrap:wrap}
+.cta .line{font-family:var(--font-serif);font-size:clamp(22px,3vw,30px);max-width:46ch}
+.btn{display:inline-block;background:var(--ink);color:var(--paper);text-decoration:none;font-family:var(--font-mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;padding:15px 26px;border-radius:6px;transition:opacity .2s;white-space:nowrap}
+.btn:hover{opacity:.88}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--ink);margin-left:12px}
+footer{padding:40px 0 64px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:13px;color:var(--ink-muted)}
+footer a{color:var(--ink-soft)}
+/* RESPONSIVE */
+@media(max-width:760px){
+  .navlinks{display:none}
+  .stats .grid{grid-template-columns:1fr;gap:28px}
+  .prop{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .hero-bg{animation:none}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+<nav id="nav"><div class="wrap">
+  <div class="brand">Ronnie <b>Extensions</b></div>
+  <div class="navlinks">
+    <a href="#rapport">Rapport</a>
+    <a href="#analyse">Analyse</a>
+    <a href="#recommandations">Recommandations</a>
+    <a href="#guide">Guide</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="hero-bg hb1"></div><div class="hero-bg hb2"></div><div class="wrap">
+  <div class="eyebrow reveal">Accompagnement Amazon · Bilan 2026</div>
+  <h1 class="reveal d1">Un compte vendeur en ordre, <span class="em">et des ventes à amorcer.</span></h1>
+  <p class="lede reveal d2">Bilan de l'accompagnement presté à Ronnie Extensions : ouverture du compte vendeur Amazon, mise en ligne des produits, et les prochaines étapes à valider ensemble.</p>
+  <div class="meta reveal d3">
+    <div>Compte<b>Sain</b></div>
+    <div>Produits en ligne<b>122</b></div>
+    <div>Perruques actives<b>5</b></div>
+    <div>Marché<b>France</b></div>
+  </div>
+</div></header>
+
+<section id="rapport"><div class="wrap">
+  <div class="sec-head reveal"><span class="sec-num">01 · Rapport</span><h2>État de la prestation, vérifié en ligne</h2></div>
+  <p class="reveal" style="max-width:64ch;color:var(--ink-soft);margin:0 0 30px">Périmètre contractualisé : création et guidage du compte vendeur, préparation de trois fiches produits prioritaires, explication pour une gestion autonome. Voici l'état réel constaté dans Amazon Seller Central.</p>
+
+  <div class="reveal" style="margin-bottom:20px">
+    <span class="pill ok">Compte Sain</span><span class="pill inf">Marché France</span><span class="pill inf">Actif</span>
+  </div>
+
+  <div class="prop reveal"><div><strong>Activité globale</strong><p>122 mises en vente sur le compte, dont 28 en attente d'activation et 0 brouillon à finaliser. Catalogue dominé par la maroquinerie et un segment perruque.</p></div><div class="pr">122</div></div>
+
+  <div style="color:var(--ink-soft);font-size:14px;margin-bottom:22px;font-family:var(--font-mono);letter-spacing:.04em;text-transform:uppercase">Perruques actives · Prix affichés</div>
+  <div class="prop reveal"><strong>Loose Wave Marron Highlights — 20 po</strong><p>Cheveux humains, densité 250 %, colorable et décolorable</p><div class="pr">180 €</div></div>
+  <div class="prop reveal d1"><strong>Bouclée Marron Lace Front — 18 pouces</strong><p>Densité 250 %, cheveux humains, couleur marron naturel</p><div class="pr">160 €</div></div>
+  <div class="prop reveal d1"><strong>Bouclée Lace Frontale — 14 pouces</strong><p>Cheveux humains, densité 250 %, dentelle transparente</p><div class="pr">115 €</div></div>
+  <div class="prop reveal d2"><strong>Lisse Bordeaux Dentelle — 12 po</strong><p>Cheveux humains, densité 250, couleur bordeaux</p><div class="pr">100 €</div></div>
+  <div class="prop reveal d2"><strong>Ondulée Chocolat — 18 po 250 %</strong><p>Cheveux humains, colorable et décolorable</p><div class="pr">160 €</div></div>
+
+  <div class="annotation reveal" style="margin-top:30px;background:var(--paper-alt)"><b>Un point d'honnêteté.</b><p>Les perruques en ligne sont 5 références différentes de celles exactes de la maquette prévue (Curly 14″ 120 € / Kinky Straight 20″ 210 € / Lisse 30″ 280 €). Le compte fonctionne et les fiches sont en stock : la prestation est accomplie sur le fonctionnement. Reste à décider si ces 3 références de la maquette seront elles aussi publiées.</p></div>
+</div></section>
+
+<div class="stats"><div class="wrap"><div class="grid">
+  <div class="stat reveal"><div class="num">Sain</div><div class="lbl">État du compte</div><div class="txt">Aucune alerte</div></div>
+  <div class="stat reveal d1"><div class="num">0</div><div class="lbl">Vente (30 j)</div><div class="txt">Boutique fraîche</div></div>
+  <div class="stat reveal d2"><div class="num">28</div><div class="lbl">En attente</div><div class="txt">À activer</div></div>
+</div></div></div>
+
+<section id="analyse"><div class="wrap">
+  <div class="sec-head reveal"><span class="sec-num">02 · Analyse</span><h2>Ce qui est solide, ce qui reste à faire</h2></div>
+  <div class="annotation reveal"><b>Les forces.</b><p>À la référence contrôlée, le compte est sain et les fiches sont complètes — titre, matière, densité, couleur, ASIN, SKU, prix et frais estimés. Le catalogue est riche (122 références), socle utile pour démarrer.</p></div>
+  <div class="annotation reveal d1"><b>Les limites.</b><p>Zéro vente sur les 30 derniers jours, 28 mises en vente non activées, pas de contenu A+ ni de campagne publicitaire, et une adresse de retour à actualiser.</p></div>
+  <div class="annotation reveal d2"><b>Le constat.</b><p>Le manque n'est pas technique : il est activational. Les fiches ne vendent pas encore. Les leviers (contenu A+, campagnes, activation des mises, adresse de retour) sont connus et actionnables.</p></div>
+  <blockquote class="reveal d3" style="margin-top:52px">La base est en ordre. <span style="color:var(--accent)">La valeur suivante viendra de la mise en vente réelle</span> — pas d'une fiche de plus.<cite>Bilan de l'accompagnement</cite></blockquote>
+</div></section>
+
+<section id="recommandations" class="alt"><div class="wrap">
+  <div class="sec-head reveal"><span class="sec-num">03 · Recommandations</span><h2>Les prochaines étapes, dans l'ordre</h2></div>
+
+  <div class="rec-group reveal"><h3>1 · Fiabiliser le compte</h3>
+  <ol class="reco">
+    <li><b>Mettre à jour l'adresse de retour</b><p>Signalée « moyen » par Amazon ; éviter les retours mal gérés.</p></li>
+    <li><b>Activer les 28 mises en attente</b><p>Un travail déjà prêt, actuellement inexploité.</p></li>
+    <li><b>Trancher FBM ou FBA</b><p>Selon le volume de ventes attendu.</p></li>
+  </ol></div>
+
+  <div class="rec-group reveal d1"><h3>2 · Amorcer les ventes</h3>
+  <ol class="reco">
+    <li><b>Contenu A+ sur les fiches perruques</b><p>La recommandation n°1 d'Amazon pour différencier la page.</p></li>
+    <li><b>Campagnes Sponsored Products légères</b><p>Sans campagne, les fiches récentes restent peu visibles.</p></li>
+    <li><b>Revoir les titres SEO</b><p>Matière, longueur, densité, couleur et usage dans chaque titre.</p></li>
+    <li><b>Regrouper les variantes proches</b><p>Beaucoup de références similaires du côté des sacs.</p></li>
+  </ol></div>
+
+  <div class="rec-group reveal d2"><h3>3 · Aligner et clôturer</h3>
+  <ol class="reco">
+    <li><b>Arbitrer l'écart sur les 3 fiches</b><p>Conserver les fiches actuelles, ou publier les 3 références validées de la maquette.</p></li>
+    <li><b>Signer la clôture formelle</b><p>Solde de 145 € à percevoir à la clôture (acompte de 145 € déjà encaissé).</p></li>
+    <li><b>Suite : synchro site ↔ Amazon</b><p>Produits et ventes centralisés. Prestation séparée, devis dédié, rien sans accord.</p></li>
+  </ol></div>
+  <p class="reveal" style="margin-top:34px;color:var(--ink-muted);font-size:13.5px;max-width:70ch">Aucun tarif n'est affiché ici. Toute offre (optimisation, synchro, accompagnement) est chiffrée par le prestataire et validée par la cliente avant lancement.</p>
+</div></section>
+
+<section id="guide"><div class="wrap">
+  <div class="sec-head reveal"><span class="sec-num">04 · Guide</span><h2>Reprendre la main, simplement</h2></div>
+  <div class="guide reveal">
+    <div class="guide-head"><h3>Ajouter un produit sur Amazon</h3><p>Version web de Seller Central, étape par étape.</p></div>
+    <div class="guide-body">
+      <div class="step"><div class="n">1</div><div class="t"><b>Ouvrir Seller Central</b><p>sellercentral.amazon.fr dans un navigateur web — l'application mobile ne donne pas accès à tout.</p></div></div>
+      <div class="step"><div class="n">2</div><div class="t"><b>Produits → Gérer les produits</b><p>Puis Ajouter des produits et vérifier si la référence existe déjà.</p></div></div>
+      <div class="step"><div class="n">3</div><div class="t"><b>Remplir sans inventer</b><p>Matière, longueur, couleur, prix, stock, poids, photos. Si un champ demande une donnée inconnue, le laisser et vérifier.</p></div></div>
+      <div class="step"><div class="n">4</div><div class="t"><b>Relire puis envoyer</b><p>Bon produit, bon prix, bonne photo, bon stock. Une fiche n'est en ligne qu'une fois son statut confirmé.</p></div></div>
+    </div>
+  </div>
+  <div class="secur reveal d1"><b>Mots de passe et codes.</b> Ne jamais les envoyer dans un document ni par message. Gardez toujours l'accès à votre compte.</div>
+</div></section>
+
+<div class="cta"><div class="wrap"><div class="inner">
+  <div class="line reveal">Des questions sur ce bilan ? Parlez-en à votre prestataire.</div>
+  <div class="reveal d1"><a class="btn" href="https://ronnie-extensions.com">Voir la boutique</a><a class="btn ghost" href="index.html">Les 3 fiches de la maquette</a></div>
+</div></div></div>
+
+<footer>
+<div class="wrap">
+  <div>Ronnie &nbsp;·&nbsp; Bilan d'accompagnement Amazon — 16 août 2026</div>
+  <div><a href="#rapport">Retour au sommaire</a></div>
+</div>
+</footer>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('nav-scrolled',window.scrollY>50);},{passive:true});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target);}});},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
