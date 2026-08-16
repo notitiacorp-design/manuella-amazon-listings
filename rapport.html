@@ -126,6 +126,7 @@ table.u td:first-child{font-weight:500}
     <a href="#s-overview" class="on">Vue d'ensemble</a>
     <a href="#s-cat">Catalogue & perruques</a>
     <a href="#s-diag">Diagnostic</a>
+    <a href="#s-tools">Outils de pilotage</a>
     <a href="#s-rec">Recommandations</a>
     <a href="#s-guide">Mode d'emploi</a>
     <a href="#s-close">Clôture</a>
@@ -160,8 +161,7 @@ table.u td:first-child{font-weight:500}
         <p class="hint">Ce qui était contractuel, et ce qui ne l'était pas</p>
         <table class="u">
           <tr><td width="46%"><b>Inclus</b></td><td>Ouverture et guidage du compte vendeur · préparation des fiches produits · guide d'utilisation</td></tr>
-          <tr><td><b>Vérifié en ligne</b></td><td>Compte Sain, actif, perruques en ligne — la prestation est accomplie sur le fonctionnement</td></tr>
-          <tr><td><b>Non inclus (devis séparé)</b></td><td>Synchro automatique des produits entre le site et Amazon</td></tr>
+          <tr><td><b>Vérifié en ligne</b></td><td>Compte Sain, actif, perruques en ligne — la prestation est accomplie</td></tr>
         </table>
       </div>
     </section>
@@ -171,9 +171,6 @@ table.u td:first-child{font-weight:500}
       <h2 style="scroll-margin;margin-top:60px">Catalogue — perruques actives <span class="tag">Données</span></h2>
       <p class="lede">Les 5 perruques actuellement commandables, triables et filtrées ci-dessous.</p>
 
-      <div class="subnav">
-        <a href="#perr" onclick="go('perruques')">Jump to</a>
-      </div>
       <div class="block">
         <div class="chips" id="fchips">
           <span class="chip on" data-f="all">Toutes <span class="ct">5</span></span>
@@ -250,6 +247,53 @@ table.u td:first-child{font-weight:500}
       </div>
     </section>
 
+    <!-- ============ OUTILS DE PILOTAGE ============ -->
+    <section id="s-tools" style="scroll-margin:90px">
+      <h2 style="margin-top:60px">Outils de pilotage <span class="tag">Graphiques</span></h2>
+      <p class="lede">Pour gérer votre boutique au quotidien : voir votre gamme, simuler un prix ou un stock, fixer un objectif.</p>
+
+      <div class="block">
+        <h3>Distribution des prix des perruques actives</h3>
+        <p class="hint">Chaque barre = une perruque. Survolez pour le détail.</p>
+        <div class="chart"><svg id="pricchart" viewBox="0 0 560 300" style="width:100%;height:auto" role="img"></svg></div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:#6b6b6b;margin-top:8px">
+          <span>■ <b>Prix de vente</b></span>
+          <span>■ <b>Net estimé</b> (après frais Amazon)</span>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Simulateur de prix & stock</h3>
+        <p class="hint">Ajustez le prix et la quantité, voyez immédiatement la valeur totale du stock.</p>
+        <div class="sim" style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div>
+            <label style="font-size:12.5px;color:#6b6b6b">Prix de vente unitaire : <b id="spv" class="num">143 €</b></label>
+            <input type="range" id="spr" min="60" max="300" step="5" value="143" style="width:100%">
+            <label style="font-size:12.5px;color:#6b6b6b;display:block;margin-top:14px">Nombre de pièces en stock : <b id="sq" class="num">10</b></label>
+            <input type="range" id="sqq" min="1" max="60" step="1" value="10" style="width:100%">
+          </div>
+          <div style="display:flex;flex-direction:column;justify-content:center;gap:10px">
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:6px 0"><span>Net par pièce</span><b id="snet" class="num">119 €</b></div>
+            <div style="display:flex;justify-content:space-between;border-bottom:1px solid #eee;padding:6px 0"><span>Frais Amazon cumulés</span><b id="sfee" class="num">240 €</b></div>
+            <div style="display:flex;justify-content:space-between;align-items:baseline;padding:6px 0"><span style="font-weight:650">Valeur nette du stock</span><b id="sval" class="num" style="font-size:26px;color:#2c8f4a">1 190 €</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Fixer un objectif de chiffre d'affaires</h3>
+        <p class="hint">Combien de ventes par mois pour atteindre votre objectif, au prix moyen actuel de 143 €.</p>
+        <label style="font-size:12.5px;color:#6b6b6b">Objectif mensuel : <b id="og" class="num">2 000 €</b></label>
+        <input type="range" id="ogo" min="500" max="10000" step="250" value="2000" style="width:100%">
+        <div class="bar" style="margin-top:20px">
+          <div class="bl"><span>Chiffre d'affaires visé</span><b id="oo2" class="num">2 000 €</b></div>
+          <div class="track"><div class="fill fg" id="ofill" style="width:20%"></div></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;border-top:1px solid #eee;padding:12px 0;margin-top:8px"><span>Correspond à environ</span><b id="osales" class="num" style="color:#2c8f4a">14 perruques / mois</b></div>
+        <div class="note" style="background:#f6f3ec;border-left:3px solid #a0813d;padding:10px 14px;font-size:13px;margin-top:12px">À titre indicatif : 14 ventes/mois ≈ une demi-vente par jour. C'est un ordre d'objectif, pas une promesse.</div>
+      </div>
+    </section>
+
     <!-- ============ RECO ============ -->
     <section id="s-rec" style="scroll-margin:40px">
       <h2 style="scroll-margin-top:50px;margin-top:60px">Recommandations <span class="tag">Actions</span></h2>
@@ -261,7 +305,7 @@ table.u td:first-child{font-weight:500}
       <div class="acc"><div class="hd"><div><span class="n">4</span>Ajouter le contenu A+</div><span class="cross">→</span></div><div class="bd"><p>Recommandation n°1 Amazon pour différencier la page : images enrichies, pavés de description. Augmente le taux de conversion.<br><b>Priorité : court terme.</b></p></div></div>
       <div class="acc"><div class="hd"><div><span class="n">5</span>Lancer une campagne Sponsored légère</div><span class="cross">→</span></div><div class="bd"><p>Sans publicité, une fiche récente reste peu visible. Campagne modeste sur les perruques les plus formatées.<br><b>Priorité : avant les promos.</b></p></div></div>
       <div class="acc"><div class="hd"><div><span class="n">6</span>Optimiser les titres SEO</div><span class="cross">→</span></div><div class="bd"><p>Matière, longueur, couleur, usage dans chaque titre/recherche. Aide le référencement interne à Amazon.<br><b>Priorité : long terme.</b></p></div></div>
-      <div class="acc"><div class="hd"><div><span class="n">7</span>Décision de clôture</div><span class="cross">→</span></div><div class="bd"><p>Publier aussi les 3 perruques de la maquette (Curly 14 po, Kinky 20 po, Lisse 30 po) ou se limiter aux 5 actives ? À arbitrer avec la cliente. Solde de 145 € à percevoir à la clôture.<br><b>Priorité : à valider.</b></p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">7</span>Suivre et ajuster les prix</div><span class="cross">→</span></div><div class="bd"><p>Relire les prix chaque mois au vu des ventes. La page « Outils de pilotage » ci-dessus permet de simuler le net à percevoir sur chaque perruque avant tout changement.<br><b>Priorité : continu.</b></p></div></div>
       </div>
     </section>
 
@@ -278,11 +322,13 @@ table.u td:first-child{font-weight:500}
     </section>
 
     <!-- ============ CLOTURE ============ -->
-    <section id="s-close">
-      <div class="block" style="border-left:5px solid #a0813d">
-        <h3>Clôture de la prestation</h3>
-        <p style="margin:10px 0">La prestation initiale (compte + fiches + guide) est accomplie et vérifiée. Une décision reste à trancher : <b>publier aussi les 3 perruques de la maquette</b> ou <b>se limiter aux 5 actives</b>. Puis solde de <b>145 €</b> à percevoir.</p>
-        <p style="margin:10px 0;color:#5f5f5f;font-size:13px">La synchro des produits entre le site et Amazon fait l'objet d'une proposition séparée, chiffrée ensemble — rien sans votre accord.</p>
+    <section id="s-close" style="scroll-margin-top:60px">
+      <h2 style="margin-top:60px">Clôture <span class="tag">Étape finale</span></h2>
+      <p class="lede">La prestation s'achève ici, sans point en suspens.</p>
+      <div class="block" style="border-left:5px solid #2c8f4a">
+        <h3>Prestation accomplie et vérifiée</h3>
+        <p style="margin:10px 0">Compte vendeur ouvert et guidé, <b>5 perruques actives</b> en ligne sur Amazon (marché France), guide remis. La prestation initiale du pack est terminée.</p>
+        <p style="margin:10px 0;color:#5f5f5f;font-size:13px"><b>Solde : 145 €</b> à percevoir (acompte de 145 € déjà encaissé).</p>
       </div>
     </section>
 
@@ -342,7 +388,7 @@ document.querySelectorAll('.acc').forEach(function(a){
 document.querySelectorAll('.tgrid th').forEach(function(th,ti){
   th.addEventListener('click',function(){
     var tbody=th.closest('table').querySelector('tbody');
-    var rows=[...tbody.querySelectorAll('tr')];
+    var rows=[].slice.call(tbody.querySelectorAll('tr'));
     var key=th.dataset.num;
     rows.sort(function(a,b){
       var av=a.children[key].textContent,bv=b.children[key].textContent;
@@ -351,10 +397,76 @@ document.querySelectorAll('.tgrid th').forEach(function(th,ti){
     });
     th.dataset.dir=th.dataset.dir==='1'?'-1':'1';
     rows.forEach(function(r){tbody.appendChild(r);});
-    document.querySelectorAll('.tgrid th').forEach(function(x,i){x.querySelector('.arr').textContent='';});
-    th.querySelector('.arr').textContent=th.dataset.dir==='1'?'▲':'▼';
+    document.querySelectorAll('.tgrid th').forEach(function(x2){if(x2.querySelector('.arr'))x2.querySelector('.arr').textContent='';});
+    if(th.querySelector('.arr'))th.querySelector('.arr').textContent=th.dataset.dir==='1'?'▲':'▼';
   });
 });
+// ------- OUTILS DE PILOTAGE -------
+// frais Amazon estimés selon le prix (partagé par graphique + simulateurs)
+function feev(p){return p<130?0.15:p<170?0.16:0.18;}
+// bar chart
+var WIGS=[["Loose Wave",180],["Bouclée Lace Front",160],["Ondulée Chocolat",160],["Bouclée Frontale",115],["Lisse Bordeaux",100]];
+var svg=document.getElementById('pricchart');
+if(svg){
+  (function(){
+    var NS='http://www.w3.org/2000/svg';
+    var W=560,H=300,m={l:44,r:10,t:20,b:34};
+    var cw=W-m.l-m.r,ch=H-m.t-m.b;
+    var maxv=200;
+    var n=WIGS.length,slot=cw/n;
+    var i,gv,w,y,x0,bw,bh,xr,el;
+    for(gv=0;gv<=maxv;gv+=40){
+      y=m.t+ch-(gv/maxv)*ch;
+      var ln=document.createElementNS(NS,'line');
+      ln.setAttribute('x1',m.l);ln.setAttribute('x2',W-m.r);ln.setAttribute('y1',y);ln.setAttribute('y2',y);
+      ln.setAttribute('stroke','#ece9e3');ln.setAttribute('stroke-width','1');svg.appendChild(ln);
+      var tx=document.createElementNS(NS,'text');tx.setAttribute('x',m.l-8);tx.setAttribute('y',y+4);tx.setAttribute('text-anchor','end');tx.setAttribute('font-size','11');tx.setAttribute('fill','#9a978f');tx.textContent=gv+'€';
+      svg.appendChild(tx);
+    }
+    for(i=0;i<n;i++){
+      var price=WIGS[i][1],net=Math.round(price*(1-feev(price)));
+      bw=slot*0.55;
+      x0=m.l+i*slot+(slot-bw)/2;
+      function bar(val,col){
+        var bh=(val/maxv)*ch;y=m.t+ch-bh;
+        var r=document.createElementNS(NS,'rect');
+        r.setAttribute('x',x0);r.setAttribute('y',y);r.setAttribute('width',bw);r.setAttribute('height',bh);r.setAttribute('rx','4');r.setAttribute('fill',col);
+        var tt=document.createElementNS(NS,'title');tt.textContent=WIGS[i][0]+' — '+val+'€';r.appendChild(tt);
+        return r;
+      }
+      // paired bars: price (back, dark) and net (front, green)
+      svg.appendChild(bar(price,'#d8c9a8'));
+      svg.appendChild(bar(net,'#2c8f4a'));
+      var lb=document.createElementNS(NS,'text');lb.setAttribute('x',x0+bw/2);lb.setAttribute('y',H-m.b+4);lb.setAttribute('text-anchor','middle');lb.setAttribute('font-size','9.5');lb.setAttribute('fill','#6b6b6b');lb.textContent=WIGS[i][0];
+      svg.appendChild(lb);
+      var pb=document.createElementNS(NS,'text');pb.setAttribute('x',x0+bw/2);pb.setAttribute('y',H-m.b+16);pb.setAttribute('text-anchor','middle');pb.setAttribute('font-size','10');pb.setAttribute('font-weight','600');pb.setAttribute('fill','#1b1b1b');pb.textContent=price+'€';
+      svg.appendChild(pb);
+    }
+  })();
+}
+// simulator prix & stock
+var spr=document.getElementById('spr'),sqq=document.getElementById('sqq');
+var spv=document.getElementById('spv'),sq=document.getElementById('sq'),snet=document.getElementById('snet'),sfee=document.getElementById('sfee'),sval=document.getElementById('sval');
+function ssim(){
+  var p=+spr.value,q=+sqq.value;
+  var f=feev(p),fees=Math.round(p*f),n=p-fees;
+  spv.textContent=p+' €';sq.textContent=q;
+  snet.textContent=n+' €';sfee.textContent=(fees*q).toLocaleString('fr-FR')+' €';
+  sval.textContent=(n*q).toLocaleString('fr-FR')+' €';
+}
+spr.addEventListener('input',ssim);sqq.addEventListener('input',ssim);ssim();
+// objectif chiffre d'affaires
+var ogo=document.getElementById('ogo'),caf=143;
+var og=document.getElementById('og'),oo2=document.getElementById('oo2'),osales=document.getElementById('osales'),ofill=document.getElementById('ofill');
+function osim(){
+  var t=+ogo.value;
+  og.textContent=t.toLocaleString('fr-FR')+' €';
+  oo2.textContent=t.toLocaleString('fr-FR')+' €';
+  var sales=Math.ceil(t/caf);
+  osales.textContent=sales+' perruques / mois';
+  ofill.style.width=Math.min(100,(t/10000)*100)+'%';
+}
+ogo.addEventListener('input',osim);osim();
 </script>
 </body>
 </html>
