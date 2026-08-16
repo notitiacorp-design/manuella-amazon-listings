@@ -3,112 +3,358 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ronnie Extensions — État des lieux & mode d'emploi Amazon</title>
+<title>Ronnie Extensions — Rapport d'accompagnement Amazon</title>
 <style>
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:#fff;color:#1a1a1a;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:16px;line-height:1.7}
-.wrap{max-width:1000px;margin:0 auto;padding:0 30px}
-/* header épuré */
-.head{padding:70px 0 46px;border-bottom:1px solid #e8e6e1}
-.kicker{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#a0813d;margin:0 0 14px}
-h1{font-size:38px;line-height:1.15;margin:0 0 16px;font-weight:650;letter-spacing:-.01em}
-.sub{color:#555;font-size:17px;max-width:70ch;margin:0}
-mark{background:#f4e9d2;padding:0 3px}
-/* blocs */
-section{padding:52px 0;border-bottom:1px solid #efede9}
-h2{font-size:24px;margin:0 0 6px;font-weight:650;letter-spacing:-.01em;display:flex;align-items:baseline;gap:14px}
-h2 .n{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:#a0813d;border:1px solid #d8c9a8;padding:2px 8px;border-radius:5px}
-h3{font-size:18px;margin:28px 0 8px;font-weight:650}
-p{margin:10px 0;color:#333}
-.why{margin-left:0}
-/* tableaux */
-table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px}
-th,td{padding:12px 14px;text-align:left;border-bottom:1px solid #e8e6e1;vertical-align:top}
-th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#777;font-weight:600;background:#faf9f6}
-tr:nth-child(even) td{background:#fbfaf8}
-td.price,td.net{font-variant-numeric:tabular-nums;font-family:ui-monospace,Menlo,monospace}
-td.net b{color:#2c6e3d}
-.alert td{background:#fdf3ef}
-.note{background:#f6f3ec;border-left:3px solid #a0813d;padding:14px 18px;font-size:15px;margin:18px 0;color:#4a463e}
-.note b{color:#333}
-/* étapes mode d'emploi */
-.step{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid #eee;align-items:flex-start}
-.step .num{flex:none;width:34px;height:34px;border-radius:50%;border:2px solid #a0813d;color:#a0813d;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px}
-.step .bd h4{margin:0 0 4px;font-size:16.5px}.step .bd p{margin:4px 0;font-size:15px}
-.step .bd .scr{font-family:ui-monospace,Menlo,monospace;font-size:13px;background:#f4f2ed;padding:2px 7px;border-radius:4px;color:#5a554c}
-.rec{border:1px solid #e3e0d9;border-left:4px solid #a0813d;padding:16px 18px;margin:14px 0;border-radius:6px;background:#fff}
-.rec b.u{color:#a0813d}
-.btn-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
-@media(max-width:700px){h1{font-size:30px}table{font-size:13px}th,td{padding:9px 8px}}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;font-size:14px;line-height:1.65;color:#1b1b1b;background:#f5f4f1}
+.wrap{position:relative}
+
+/* app shell */
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.top{grid-column:1/-1;position:sticky;top:0;z-index:40;background:#fff;border-bottom:1px solid #e6e4e0;padding:12px 22px;display:flex;align-items:center;gap:14px}
+.top .dot{width:9px;height:9px;border-radius:50%;background:#2c8f4a}
+.top .tt{font-weight:650;font-size:15px}
+.top .fmt{font-size:12px;color:#6b6b6b}
+.top input[type=text]{margin-left:auto;width:240px;padding:7px 12px;border:1px solid #dcd9d3;border-radius:6px;font-size:13px}
+.hamb-btn{display:none}
+
+/* sidebar */
+.side{background:#fff;border-right:1px solid #e6e4e0;padding:18px 0;position:sticky;top:57px;height:calc(100vh - 57px);overflow-y:auto}
+.side .grp{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#9a978f;padding:16px 22px 6px}
+.side a{display:block;padding:8px 22px;color:#474747;text-decoration:none;font-size:13.5px;border-left:3px solid transparent}
+.side a:hover{background:#f7f6f3}
+.side a.on{background:#f2efe7;border-left-color:#a0813d;font-weight:600;color:#1b1b1b}
+.side .mini{padding:14px 22px 6px}
+.side .mini .kv{display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0;color:#555;border-bottom:1px solid #f0eeea}
+.side .mini b{font-weight:650;font-variant-numeric:tabular-nums}
+
+/* content */
+.content{padding:34px 40px 80px;max-width:980px;min-width:0}
+h2{font-size:22px;margin:0 0 4px;font-weight:650;letter-spacing:-.01em;scroll-margin-top:80px}
+h2 .tag{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#a0813d;border:1px solid #d4c6a5;padding:2px 9px;border-radius:5px;vertical-align:3px;margin-left:8px}
+.lede{color:#5f5f5f;font-size:14.5px;max-width:78ch;margin:6px 0 26px}
+.block{background:#fff;border:1px solid #e6e4e0;border-radius:10px;padding:22px 24px;margin:0 0 22px}
+.block h3{font-size:15px;font-weight:650;margin:0 0 2px}
+.block .hint{font-size:12.5px;color:#8a8a8a;margin:0 0 12px}
+caption{ }
+
+/* KPI row */
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:22px}
+.kpi{background:#fff;border:1px solid #e6e4e0;border-radius:10px;padding:14px 16px}
+.kpi .l{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#8a8a8a;margin-bottom:8px}
+.kpi .v{font-size:28px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.kpi .d{font-size:11.5px;color:#6b6b6b;margin-top:6px}
+
+/* tables triables */
+table.tgrid{width:100%;border-collapse:collapse;font-size:13px}
+.tgrid th{text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#6b6b6b;padding:8px 10px;border-bottom:1px solid #e3e1dc;cursor:pointer;user-select:none;white-space:nowrap}
+.tgrid th:hover{color:#a0813d}
+.tgrid th .arr{opacity:0;margin-left:3px}
+.tgrid th.s .arr{opacity:1}
+.tgrid td{padding:9px 10px;border-bottom:1px solid #f0eef3;vertical-align:top;font-variant-numeric:tabular-nums}
+.tgrid tbody tr:hover{background:#faf8f0}
+.hidden-row{display:none}
+.badge{display:inline-block;font-size:10.5px;font-weight:600;padding:2px 9px;border-radius:20px;white-space:nowrap}
+.b-active{background:#e7f4ea;color:#1f7a38}
+.b-wait{background:#fdf1d7;color:#9a6b00}
+.b-off{background:#fdf1ef;color:#b3462e}
+.num{font-variant-numeric:tabular-nums}
+
+/* filter chips */
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 4px}
+.chip{padding:5px 12px;border:1px solid #dcd9d3;border-radius:20px;font-size:12.5px;cursor:pointer;background:#fff;color:#555}
+.chip.on{background:#1b1b1b;color:#fff;border-color:#1b1b1b}
+.chip .ct{font-weight:700;margin-left:4px}
+
+/* accordion / tab */
+.tabs{display:flex;gap:6px;margin:0 0 20px;border-bottom:1px solid #e6e4e0;position:sticky;top:57px;background:#f5f8f1;padding:8px 0 0;z-index:30}
+.tab{padding:9px 16px;border-radius:8px 8px 0 0;border:1px solid transparent;font-size:13px;cursor:pointer;color:#5f5f5f;background:transparent}
+.tab.on{background:#fff;border-color:#e6e4e0;border-bottom-color:#fff;font-weight:600;color:#1b1b1b}
+.tab-panel{display:none}
+.tab-panel.on{display:block}
+.subnav{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 18px}
+.subnav a{font-size:12px;color:#6b6b6b;text-decoration:none;border:1px solid #ddd;padding:4px 10px;border-radius:5px}
+.subnav a:hover{color:#1b1b1b;border-color:#a0813d}
+
+/* accordion */
+.acc{border:1px solid #e6e4e0;border-radius:9px;margin:0 0 10px;overflow:hidden;background:#fff}
+.acc .hd{padding:15px 18px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14.5px;background:#fff}
+.acc .hd .n{color:#a0813d;font-family:ui-monospace,Menlo,monospace;font-size:12px;margin-right:10px}
+.acc .hd .chev{transition:transform .2s;color:#8a8a8a}
+.acc.open .hd .chev{transform:rotate(90deg)}
+.acc .bd{padding:0 18px;max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc.open .bd{max-height:2000px;padding-bottom:18px}
+.acc .bd p{margin:8px 0;color:#3d3d3d}
+.acc .bd .note{background:#f6f3ec;border-left:3px solid #a0813d;padding:10px 14px;font-size:13px;color:#4a463e;margin:10px 0}
+
+/* bar chart */
+.bar{margin:6px 0 14px}
+.bar .bl{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:3px;color:#555}
+.bar .track{height:9px;background:#ece9e3;border-radius:5px;overflow:hidden}
+.bar .fill{height:100%;border-radius:5px}
+.fill.fg{background:#a0813d}.fill.fg2{background:#2c8f4a}.fill.fgr{background:#b3462a}.fill.fgc{background:#8a8a8a}
+
+table.u td:first-child{font-weight:500}
+@media(max-width:860px){
+  .app{grid-template-columns:1fr}
+  .side{display:none;position:fixed;z-index:50;top:57px;bottom:0}
+  .side.open{display:block}
+  .hamb-btn{display:inline-flex;margin-right:8px;padding:6px 10px;border:1px solid #ddd;border-radius:6px;background:#fff;cursor:pointer}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .content{padding:24px 18px 60px}
+  .topbar input[type=text]{width:150px}
+}
+@media(max-width:480px){.kpis{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
+<div class="app">
 
-<header class="head"><div class="wrap">
-  <div class="kicker">Dossier · Ronnie Extensions · Amazon</div>
-  <h1>État des lieux et mode d'emploi de votre compte Amazon</h1>
-  <p class="sub">Tout ce que la prestation a mis en place, ce que les chiffres de votre compte signifient pour vous, et comment gérer la suite seule — expliqué à partir de <mark>vos données réelles</mark>, pas en général.</p>
-</div></header>
-
-<section><div class="wrap">
-  <h2><span class="n">1</span>Ce que votre compte contient aujourd'hui</h2>
-  <p>Lu dans Seller Central — marché France — au moment du dossier :</p>
-  <table>
-    <tr><th>Indicateur</th><th>Valeur</th><th>Ce que ça veut dire pour vous</th></tr>
-    <tr><td>Mises en vente</td><td class="price">122</td><td>Vos produits prêts sur Amazon, dont <b>94 actives</b></td></tr>
-    <tr><td>En attente d'activation</td><td class="price">28</td><td>Des fiches déjà saisies mais <b>pas encore visibles</b> — un travail que vous ne revendez pas</td></tr>
-    <tr><td>Brouillons</td><td class="price">0</td><td>Catalogue propre, rien d'oublié</td></tr>
-    <tr><td>Ventes · 30 derniers jours</td><td class="price">0</td><td>Aucune commande pour l'instant — normal pour un démarrage</td></tr>
-    <tr><td>Expédition</td><td colspan="2">FBM (Fulfilment by Merchant) : <b>vous expédiez vous-même</b></td></tr>
-  </table>
-  <div class="note"><b>À comprendre :</b> « en attente d'activation » = la fiche est complète mais Amazon ne l'a pas encore publiée. Ce n'est pas une erreur de votre part, mais tant qu'elles sont dans cet état, ces 28 produits ne peuvent pas être commandés. C'est votre plus grosse marge de progression immédiate.</div>
-</div></section>
-
-<section><div class="wrap">
-  <h2><span class="n">2</span>Les perruques actives et ce qu'elles vous rapportent</h2>
-  <p>Voici les 5 perruques actuellement actives sur votre compte, avec les frais Amazon affichés.</p>
-  <table>
-    <tr><th>Perruque</th><th>Longueur</th><th>Prix</th><th>Frais Amazon</th><th>Expédition kit</th></tr>
-    <tr><td>Loose Wave <b>Marron Highlights</b></td><td>20 po</td><td class="price">180 €</td><td class="price">estimés ≤ 26,82 €</td><td class="price">+ 6,99 €</td></tr>
-    <tr><td>Bouclée <b>Marron Lace Front</b></td><td>18 po</td><td class="price">160 €</td><td class="price">estimés ≤ 26,82 €</td><td class="price">+ 6,99 €</td></tr>
-    <tr><td>Ondulée <b>Chocolat</b> 250 %</td><td>18 po</td><td class="price">160 €</td><td class="price">estimés ≤ 26,82 €</td><td class="price">+ 6,99 €</td></tr>
-    <tr><td>Bouclée <b>Lace Frontale</b></td><td>14 po</td><td class="price">115 €</td><td class="price">≈ 17,55 €</td><td class="price">+ 6,99 €</td></tr>
-    <tr><td>Lisse <b>Bordeaux Dentelle</b></td><td>12 po</td><td class="price">100 €</td><td class="price">≈ 22 € (plus faible)</td><td class="price">+ 6,99 €</td></tr>
-  </table>
-  <div class="note"><b>Le calcul à retenir :</b> sur la perruque la plus chère (180 €), Amazon reprend environ 27 € de frais + 7 € d'expédition si vous faites payer la livraison. Il vous reste donc environ <b>146 €</b> hors coût d'achat de la perruque et hors stock. Chaque € retiré du prix (pour être « plus compétitif ») grignote directement cette marge — c'est pourquoi il vaut mieux vendre la qualité que baisser le prix.</div>
-</div></section>
-
-<section><div class="wrap">
-  <h2><span class="n">3</span>Le point qui bloque : votre adresse de retour</h2>
-  <p>Dans votre compte, Amazon affiche une action à traiter signalée <b>« moyenne »</b> : <mark>vérifier l'adresse de retour</mark>.</p>
-  <p>C'est concret : quand un client vous renvoie un article, Amazon a besoin d'une adresse où renvoyer le colis. Tant qu'elle n'est pas confirmée, une partie du processus de retour peut rester bloquée — ce qui peut décourager un acheteur hésitant.</p>
-  <h3>Comment la corriger</h3>
-  <p>Dans Seller Central → <b>Paramètres</b> → <b>Options d'expédition</b> → <b>Adresse de retour</b>. Vérifiez l'adresse, enregistrez. Deux minutes, aucune conséquence sur vos ventes, mais l'alerte disparaît et vos retours fonctionnent du premier coup.</p>
-  <div class="note"><b>Pourquoi c'est prioritaire :</b> un acheteur qui voit « retour compliqué » choisit le vendeur d'à côté. C'est la toute première action de fiabilité.</div>
-</div></section>
-
-<section><div class="wrap">
-  <h2><span class="n">4</span>Si vous continuez seule : ajouter un produit, pas à pas</h2>
-  <p>Version web (sellercentral.amazon.fr). Rester sur Amazon uniquement, jamais par ailleurs.</p>
-  <div class="step"><div class="num">1</div><div class="bd"><h4>Ouvrir le catalogue</h4><p>Connectez-vous sur <span class="scr">sellercentral.amazon.fr</span>, puis <span class="scr">Catalogue → Ajouter des produits</span>.</p></div></div>
-  <div class="step"><div class="num">2</div><div class="bd"><h4>Rechercher l'article</h4><p>Cherchez votre produit ou choisissez la catégorie. Pour une perruque : accessoires de beauté / extension capillaire.</p></div></div>
-  <div class="step"><div class="num">3</div><div class="bd"><h4>Remplir chaque champ</h4><p>Nom, description, matière, longueur, couleur, densité, photos, prix, stock. <b>Ne renseignez que ce dont vous êtes sûre.</b></p></div></div>
-  <div class="step"><div class="num">4</div><div class="bd"><h4>Relire avant d'envoyer</h4><p>Vérifiez une dernière fois le prix et la description, puis validez.</p></div></div>
-  <div class="step"><div class="num">5</div><div class="bd"><h4>En cas d'écran bloquant</h4><p>Si Amazon demande une donnée que vous ne connaissez pas, <b>ne la devinez pas</b>. Faites-moi une capture de l'écran, je vous dis quoi mettre.</p></div></div>
-  <div class="note"><b>Sécurité — à ne jamais me transmettre :</b> votre mot de passe, les codes reçus par SMS, vos coordonnées bancaires ou votre pièce d'identité. Je n'en ai jamais besoin pour vous aider.</div>
-</div></section>
-
-<section><div class="wrap">
-  <h2><span class="n">5</span>La décision à prendre pour clore</h2>
-  <p>La prestation (compte + fiches + guide) est accomplie et vérifiée en ligne : compte Sain, 122 mises en vente, perruques en ligne. Une seule question reste ouverte avant de clore :</p>
-  <div class="rec"><b>Publier aussi les 3 perruques de la maquette</b> (Curly 14 po — 120 € ; Kinky straight 20 po — 210 € ; Lisse 30 po — 280 €) <u>ou</u> se limiter aux 5 déjà actives ?</div>
-  <p>Les deux choix sont valables. Si vous préférez vous concentrer sur l'existant, on clôt avec les 5 actives. Si vous voulez les ajouter pour la gamme haute, je vous accompagne.</p>
-  <div class="btn-row">
-    <a class="btn" href="https://ronnie-extensions.com" style="padding:13px 26px;background:#a0813d;color:#fff;text-decoration:none;border-radius:6px;font-weight:600">Voir ma boutique</a>
+  <div class="topbar">
+    <button class="hamb-btn" id="hamb">☰</button>
+    <span class="dot"></span>
+    <div>
+      <div class="title">Ronnie Extensions · Rapport Amazon</div>
+      <div class="fmt">Source : Seller Central (France) · édition 16/08/2026 · beige</div>
+    </div>
+    <input type="text" id="q" placeholder="Filtrer produits… (nom ou prix)">
   </div>
-  <p style="font-size:14px;color:#777;margin-top:26px;border-top:1px solid #eee;padding-top:16px">Dossier établi le 16 août 2026 d'après Amazon Seller Central (marché France). La synchro des produits entre le site et Amazon fait l'objet d'une proposition séparée.</p>
-</div></section>
 
+  <aside class="side" id="side">
+    <div class="grp">Sommaire</div>
+    <a href="#s-overview" class="on">Vue d'ensemble</a>
+    <a href="#s-cat">Catalogue & perruques</a>
+    <a href="#s-diag">Diagnostic</a>
+    <a href="#s-rec">Recommandations</a>
+    <a href="#s-guide">Mode d'emploi</a>
+    <a href="#s-close">Clôture</a>
+    <div class="grp">Compte</div>
+    <div class="mini">
+      <div class="kv"><span>Marché</span><b>France</b></div>
+      <div class="kv"><span>État</span><b style="color:#2c8f4a">Sain</b></div>
+      <div class="kv"><span>Mises en vente</span><b>122</b></div>
+      <div class="kv"><span>Actives</span><b>94</b></div>
+      <div class="kv"><span>En attente</span><b>28</b></div>
+      <div class="kv"><span>Brouillons</span><b>0</b></div>
+      <div class="kv"><span>Ventes · 30 j</span><b>0</b></div>
+    </div>
+  </aside>
+
+  <main class="content">
+
+    <!-- ============ OVERVIEW ============ -->
+    <section id="s-overview">
+      <h2>Vue d'ensemble <span class="tag">Rapport</span></h2>
+      <p class="lede">L'état réel du compte et de la prestation, lu directement dans Amazon Seller Central sur le marché France. Les chiffres sont ceux du compte à la date d'édition.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="l">Mises en vente</div><div class="v">122</div><div class="d">total catalogue</div></div>
+        <div class="kpi"><div class="l">Actives</div><div class="v">94</div><div class="d">visibles & commandables</div></div>
+        <div class="kpi"><div class="l">En attente</div><div class="v">28</div><div class="d">fiches complètes, non publiées</div></div>
+        <div class="kpi"><div class="l">Brouillons</div><div class="v" style="color:#2c8f4a">0</div><div class="d">catalogue propre</div></div>
+        <div class="kpi"><div class="l">Ventes · 30 jours</div><div class="v">0</div><div class="d">démarrage récent</div></div>
+      </div>
+
+      <div class="block" style="border-top:3px solid #a0813d">
+        <h3>Périmètre de la prestation</h3>
+        <p class="hint">Ce qui était contractuel, et ce qui ne l'était pas</p>
+        <table class="u">
+          <tr><td width="46%"><b>Inclus</b></td><td>Ouverture et guidage du compte vendeur · préparation des fiches produits · guide d'utilisation</td></tr>
+          <tr><td><b>Vérifié en ligne</b></td><td>Compte Sain, actif, perruques en ligne — la prestation est accomplie sur le fonctionnement</td></tr>
+          <tr><td><b>Non inclus (devis séparé)</b></td><td>Synchro automatique des produits entre le site et Amazon</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ CATALOGUE ============ -->
+    <section id="s-catalog" style="scroll-margin:90px">
+      <h2 style="scroll-margin;margin-top:60px">Catalogue — perruques actives <span class="tag">Données</span></h2>
+      <p class="lede">Les 5 perruques actuellement commandables, triables et filtrées ci-dessous.</p>
+
+      <div class="subnav">
+        <a href="#perr" onclick="go('perruques')">Jump to</a>
+      </div>
+      <div class="block">
+        <div class="chips" id="fchips">
+          <span class="chip on" data-f="all">Toutes <span class="ct">5</span></span>
+          <span class="chip" data-f="high">Haut de gamme ≥160 € <span class="ct">3</span></span>
+          <span class="chip" data-f="entry">Entrée ≤120 € <span class="ct">2</span></span>
+        </div>
+        <table class="tgrid" id="wigtab">
+          <thead><tr><th data-k="0" data-num="0">Perruque</th><th data-num="1">Longueur</th><th data-num="2">Prix</th><th>Frais est.</th><th>Statut</th></tr></thead>
+          <tbody>
+            <tr data-p="180"><td>Loose Wave Marron Highlights</td><td>20 po</td><td class="num">180 €</td><td class="num">≤ 26,82 €</td><td><span class="badge b-active">Active</span></td></tr>
+            <tr data-p="160"><td>Bouclée Marron Lace Front</td><td>18 po</td><td class="num">160 €</td><td class="num">≤ 26,82 €</td><td><span class="badge b-active">Active</span></td></tr>
+            <tr data-p="160"><td>Ondulée Chocolat 250 %</td><td>18 po</td><td class="num">160 €</td><td class="num">≤ 26,82 €</td><td><span class="badge b-active">Active</span></td></tr>
+            <tr data-p="115"><td>Bouclée Lace Frontale</td><td>14 po</td><td class="num">115 €</td><td class="num">≈ 17,55 €</td><td><span class="badge b-active">Active</span></td></tr>
+            <tr data-p="100"><td>Lisse Bordeaux Dentelle</td><td>12 po</td><td class="num">100 €</td><td class="num">≈ 22 €</td><td><span class="badge b-active">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="block">
+        <h3>Calcul de marge — une lecture</h3>
+        <p class="hint">Interactif : déplacez le prix pour voir le net estimé</p>
+        <div style="display:flex;flex-wrap:wrap;gap:26px;align-items:center">
+          <div style="flex:1;min-width:220px">
+            <label style="font-size:12.5px;color:#6b6b6b">Prix de vente : <b id="pv" class="num">180 €</b></label>
+            <input type="range" id="pr" min="60" max="300" step="5" value="180" style="width:100%">
+            <div style="font-size:12px;color:#8a8a8a">Frais Amazon estimés ≈ <b id="fee" class="num">27 €</b> · expédition client <b>+6,99 €</b></div>
+          </div>
+          <div style="min-width:200px">
+            <div class="bar">
+              <div class="bl"><span>Reversés par Amazon</span><b id="net" class="num">146 €</b></div>
+              <div class="track"><div class="fill fg" id="netf" style="width:66%"></div></div>
+            </div>
+            <div class="bar">
+              <div class="bl"><span>Frais</span><b id="fee2" class="num">27 €</b></div>
+              <div class="track"><div class="fill fg3" id="feef" style="width:15%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="note" style="background:#f6f3ec;border-left:3px solid #a0813d;padding:10px 14px;font-size:13px;margin-top:14px">Chaque euro retiré du prix grignote directement cette marge. Mieux vaut vendre la qualité que se battre sur le prix.</div>
+      </div>
+    </section>
+
+    <!-- ============ DIAGNOSTIC ============ -->
+    <section id="s-diag" style="scroll-margin:90px">
+      <h2 style="margin-top:60px">Diagnostic <span class="tag">Analyse</span></h2>
+      <p class="lede">Ce qui est solide, ce qui bloque, ce qui fera la différence — à partir des données réelles.</p>
+
+      <div class="block">
+        <h3>Répartition du catalogue</h3>
+        <p class="hint">Part des 122 mises en vente par grande famille</p>
+        <div class="bar"><div class="bl"><span>Maroquinerie « Les Petits Bombes »</span><b>~45 sur 122</b></div><div class="track"><div class="fill fgc" style="width:37%"></div></div></div>
+        <div class="bar"><div class="bl"><span>Perruques / cheveux</span><b>5+ en attente</b></div><div class="track"><div class="fill fg" style="width:8%"></div></div></div>
+        <div class="bar"><div class="bl"><span>Autres / divers</span><b>reste</b></div><div class="track"><div class="fill fg2" style="width:12%"></div></div></div>
+      </div>
+
+      <div class="block">
+        <h3>Forces & limites</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+          <div><b style="font-size:13px">Forces</b>
+            <ul style="margin:8px 0;padding-left:20px;color:#3d3d3d">
+              <li>Compte sain, actif, marché France</li>
+              <li>5 perruques en ligne, fiches complètes</li>
+              <li>Catalogue large (122 références)</li>
+            </ul>
+          </div>
+          <div><b style="font-size:13px">Limites</b>
+            <ul style="margin:8px 0;padding-left:20px;color:#3d3d3d">
+              <li>Zéro vente sur 30 jours</li>
+              <li>28 mises en attente non activées</li>
+              <li>Pas de contenu A+, adresse de retour à actualiser</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RECO ============ -->
+    <section id="s-rec" style="scroll-margin:40px">
+      <h2 style="scroll-margin-top:50px;margin-top:60px">Recommandations <span class="tag">Actions</span></h2>
+      <p class="lede">Dans l'ordre : fiabiliser, amorcer, décider. Cliquez pour déplier chaque action.</p>
+      <div class="act">
+      <div class="acc open"><div class="hd"><div><span class="n">1</span>Mettre à jour l'adresse de retour</div><span class="cross">→</span></div><div class="bd"><p>Dans Seller Central → Paramètres → Options d'expédition → Adresse de retour. Vérifiez, enregistrez. Empêche les retours bloqués, un acheteur hésitant.<br><b>Priorité : immédiate.</b></p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">2</span>Activer les 28 mises en attente</div><span class="cross">→</span></div><div class="bd"><p>Fiches déjà complètes mais invisibles. Les activer expose tout le catalogue sans coût. Vérifier prix/stock avant publication.<br><b>Priorité : immédiate.</b></p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">3</span>Trancher FBM ou FBA</div><span class="cross">→</span></div><div class="bd"><p>FBM (actuel)= vous expédiez vous-même. FBA = Amazon stocke & livre. FBA simplifie mais coûte un stock en entrepôt. À décider selon le volume de ventes visé.<br><b>Priorité : court terme.</b></p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">4</span>Ajouter le contenu A+</div><span class="cross">→</span></div><div class="bd"><p>Recommandation n°1 Amazon pour différencier la page : images enrichies, pavés de description. Augmente le taux de conversion.<br><b>Priorité : court terme.</b></p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">5</span>Lancer une campagne Sponsored légère</div><span class="cross">→</span></div><div class="bd"><p>Sans publicité, une fiche récente reste peu visible. Campagne modeste sur les perruques les plus formatées.<br><b>Priorité : avant les promos.</b></p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">6</span>Optimiser les titres SEO</div><span class="cross">→</span></div><div class="bd"><p>Matière, longueur, couleur, usage dans chaque titre/recherche. Aide le référencement interne à Amazon.<br><b>Priorité : long terme.</b></p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">7</span>Décision de clôture</div><span class="cross">→</span></div><div class="bd"><p>Publier aussi les 3 perruques de la maquette (Curly 14 po, Kinky 20 po, Lisse 30 po) ou se limiter aux 5 actives ? À arbitrer avec la cliente. Solde de 145 € à percevoir à la clôture.<br><b>Priorité : à valider.</b></p></div></div>
+      </div>
+    </section>
+
+    <!-- ============ GUIDE ============ -->
+    <section id="s-guide" style="scroll-margin-top:60px">
+      <h2 style="margin-top:60px">Mode d'emploi <span class="tag">Guide</span></h2>
+      <p class="lede">Pour continuer seule en toute sécurité.</p>
+      <div class="act">
+      <div class="acc open"><div class="hd"><div><span class="n">1</span>Le site reste à vous</div><span class="cross">→</span></div><div class="bd"><p>Votre site est entièrement à vous. Amazon ne prélève des <b>frais que sur ce qui se vend sur Amazon</b>, jamais sur votre site.</p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">2</span>Ajouter un produit Amazon</div><span class="cross">→</span></div><div class="bd"><p><b>sellercentral.amazon.fr</b> → Catégorie → Ajouter des produits → rechercher → remplir (nom, matière, longueur, couleur, photos, prix, stock) → relire → envoyer.<br/>On ne renseigne que ce dont on est sûr.</p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">3</span>En cas d'écran bloquant</div><span class="cross">→</span></div><div class="bd"><p>Si Amazon demande une donnée inconnue, ne pas la deviner. Faire une capture d'écran et l'envoyer : je dis quoi mettre.</p></div></div>
+      <div class="acc"><div class="hd"><div><span class="n">4</span>Sécurité</div><span class="cross">→</span></div><div class="bd"><p>Jamais transmis : mot de passe, code SMS, coordonnées bancaires, pièce d'identité. Garder l'accès à son compte.</p></div></div>
+      </div>
+    </section>
+
+    <!-- ============ CLOTURE ============ -->
+    <section id="s-close">
+      <div class="block" style="border-left:5px solid #a0813d">
+        <h3>Clôture de la prestation</h3>
+        <p style="margin:10px 0">La prestation initiale (compte + fiches + guide) est accomplie et vérifiée. Une décision reste à trancher : <b>publier aussi les 3 perruques de la maquette</b> ou <b>se limiter aux 5 actives</b>. Puis solde de <b>145 €</b> à percevoir.</p>
+        <p style="margin:10px 0;color:#5f5f5f;font-size:13px">La synchro des produits entre le site et Amazon fait l'objet d'une proposition séparée, chiffrée ensemble — rien sans votre accord.</p>
+      </div>
+    </section>
+
+  </main>
+</div>
+</div> <!-- end app -->
+
+<script>
+// sidebar active
+var links=document.querySelectorAll('.side a');
+var secs=document.querySelectorAll('section');
+window.addEventListener('scroll',function(){
+  var pos=window.scrollY+120;
+  var cur='';
+  secs.forEach(function(s){if(s.offsetTop<=pos)cur=s.id;});
+  links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur);});
+},{passive:true});
+// hamburger
+document.getElementById('hamb').addEventListener('click',function(){document.getElementById('side').classList.toggle('open');});
+// chips filter
+var chips=document.querySelectorAll('#fchips .chip');
+chips.forEach(function(c){c.addEventListener('click',function(){
+  chips.forEach(function(x){x.classList.remove('on');});
+  c.classList.add('on');
+  var f=c.dataset.f;
+  document.querySelectorAll('#wigtab tbody tr').forEach(function(r){
+    var show=(f==='all');
+    if(f==='high')show=parseInt(r.dataset.p)>=160;
+    if(f==='entry')show=parseInt(r.dataset.p)<=120;
+    r.style.display=show?'':'none';
+  });
+});});
+// HEART: margin calculator
+var inp=document.getElementById('pr');
+var pv=document.getElementById('pv'),fee=document.getElementById('fee'),net=document.getElementById('net');
+var netf=document.getElementById('netf'),fee2=document.getElementById('fee2'),feef=document.getElementById('feef');
+function calc(){
+  var p=+inp.value;
+  var f=p<130?0.15:p<170?0.16:0.18;
+  var fees=Math.round(p*f);
+  var n=p-fees;
+  pv.textContent=p+' €';fee.textContent='≈ '+fees+' €';net.textContent=(n)+' €';
+  netf.style.width=Math.min(90,Math.max(8,n/p*100))+'%';
+  fee2.textContent=fees+' €';feef.style.width=Math.min(60,fees/p*100+4)+'%';
+}
+inp.addEventListener('input',calc);calc();
+// accordion
+document.querySelectorAll('.acc').forEach(function(a){
+  a.querySelector('.hd').addEventListener('click',function(){
+    a.classList.toggle('open');
+    var bd=a.querySelector('.bd');
+    if(a.classList.contains('open'))bd.style.maxHeight=bd.scrollHeight+'px';
+    else bd.style.maxHeight='0';
+  });
+});
+// table sort
+document.querySelectorAll('.tgrid th').forEach(function(th,ti){
+  th.addEventListener('click',function(){
+    var tbody=th.closest('table').querySelector('tbody');
+    var rows=[...tbody.querySelectorAll('tr')];
+    var key=th.dataset.num;
+    rows.sort(function(a,b){
+      var av=a.children[key].textContent,bv=b.children[key].textContent;
+      var an=parseFloat(av.replace(/[^\d.-]/g,'')),bn=parseFloat(bv.replace(/[^\d.-]/g,''));
+      return (th.dataset.dir==='1'?1:-1)*(an-bn||av.localeCompare(bv));
+    });
+    th.dataset.dir=th.dataset.dir==='1'?'-1':'1';
+    rows.forEach(function(r){tbody.appendChild(r);});
+    document.querySelectorAll('.tgrid th').forEach(function(x,i){x.querySelector('.arr').textContent='';});
+    th.querySelector('.arr').textContent=th.dataset.dir==='1'?'▲':'▼';
+  });
+});
+</script>
 </body>
 </html>
